@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuários</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">Turistando</a>
+        </div>
+        <div class="user-icon">
+            <a href="/registrar">
+                <i class="fa-solid fa-user"></i>             
+            </a>
+        </div>
+    </header>
+    <div class="container">
+        <table id="attractions" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/attractions')
+                .then(response => response.json())
+                .then(data => {
+                    const attractionsTbody = document.querySelector('#attractions tbody');
+                    data.forEach(user => {
+                        const userRow = document.createElement('tr');
+                        attractionRow.innerHTML = `
+                            <td>${attraction.id}</td>
+                            <td>${attraction.nome}</td>
+                            <td>${attraction.latitude}</td>
+                            <td>${attraction.longitude}</td>
+                            <td>
+                                <a href="/update/${attraction.id}" class="action-button">Atualizar</a>
+                                <a href="/delete/${attraction.id}" class="action-button">Deletar</a>
+                            </td>
+                        `;
+                        attractionsTbody.appendChild(userRow);
+                    });
+                });
+        });
+    </script>
+    <script src="/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

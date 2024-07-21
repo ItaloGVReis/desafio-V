@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Ponto Turístico</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">Turistando</a>
+        </div>
+        <div class="user-icon">
+            <a href="/registrar">
+                <i class="fa-solid fa-user"></i>             
+            </a>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Adicionar Ponto Turístico</h1>
+        <form action="/add_ponto" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="text" id="nome" name="nome" class="input_form" placeholder="Nome" required>
+            </div>
+            <div class="form-group">
+                <textarea id="descricao" name="descricao" class="input_form" placeholder="Descrição" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="file" id="imagem" name="imagem" class="input_form" accept="image/*">
+            </div>
+            <div class="form-group">
+                <input type="text" id="latitude" name="latitude" class="input_form"  placeholder="Latitude" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="longitude" name="longitude" class="input_form"  placeholder="Longitude" required>
+            </div>
+            <div class="form-group">
+                <select name="cidade_id" class="input_form">
+                    <option value="">Cidade</option>
+                    <option value="1">Rosário</option>
+                    <option value="2">Barreirinhas</option>
+                    <option value="3">Carolina</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" id="valor_entrada" name="valor_entrada" class="input_form" placeholder="Valor de Entrada">
+            </div>
+            <div class="form-group">
+                <label for="e_publico">Público:</label>
+                <input type="checkbox" id="e_publico" name="e_publico" class="input_checkbox" value="1">
+            </div>
+            <div class="form-group">
+                <label for="status">Ativo:</label>
+                <input type="checkbox" id="status" name="status" class="input_checkbox" value="1">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Adicionar Ponto</button>
+            </div>
+        </form>
+    </div>
+    
+    <script src="/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
