@@ -24,18 +24,25 @@
     <main>
         <div class="signup-container">
             <h2>Criar uma conta</h2>
-            <form id="signup-form">
-                <input type="nome" class="input_form" placeholder="Nome" required>
-                <input type="email" class="input_form" placeholder="Email" required>
+            <form id="signup-form" action="/adduser" method="post">
+                <input name="nome" type="nome" class="input_form" placeholder="Nome" required>
+                <input name="email" type="email" class="input_form" placeholder="Email" required>
                 <div class="password-container">
-                    <input type="password" class="input_form" placeholder="Senha" required>
-                    <input type="confirmar_password" class="input_form" placeholder="Confirme sua senha" required>
+                    <input name="senha" type="password" class="input_form" placeholder="Senha" required>
+                    <input type="password" class="input_form" placeholder="Confirme sua senha" required>
                 </div>
                 <button type="submit">Finalizar cadastro</button>
+            </form>
+            <h2 class="texto-login">Login</h2>
+            <form id="login-form" action="/login" method="post">
+                <input name="email" type="email" class="input_form" placeholder="insira seu email" required>
+                <input name="senha" type="password" class="input_form" placeholder="insira sua senha" required>
+                <button type="submit">Fazer Login</button>
             </form>
         </div>
     </main>
     <script src="/script.js"></script>
+    <script src="/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

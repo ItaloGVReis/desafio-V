@@ -46,14 +46,24 @@ app.get('/registrar', (req, res) => {
 });
 
 app.post('/adduser', (req, res) => {
-    let user = { nome: req.body.nome, email: req.body.email, senha: req.body.senha, data_cadastro: new Date() };
+    console.log('Dados recebidos:', req.body);
+    let user = {
+        nome: req.body.nome,
+        email: req.body.email,
+        senha: req.body.senha,
+        data_cadastro: new Date()
+    };
     let sql = 'INSERT INTO usuarios SET ?';
+
     db.query(sql, user, (err, result) => {
-        if (err) throw err;
+        if (err) {
+            console.error('Erro ao inserir usuário:', err);
+            return res.status(500).send('Erro no servidor');
+        }
+        console.log('Usuário inserido com sucesso:', result);
         res.redirect('/usuarios');
     });
 });
-
 app.get('/update/:id', (req, res) => {
     res.sendFile(__dirname + '/views/users/update.html');
 });
@@ -79,6 +89,26 @@ app.get('/delete/:id', (req, res) => {
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.redirect('/usuarios');
+    });
+});
+app.post('/login', (req, res) => {
+    const email = req.body.email;
+    const senha = req.body.senha;
+
+    const sql = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
+    db.query(sql, [email, senha], (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar usuário:', err);
+            return res.status(500).send('Erro no servidor');
+        }
+
+        if (results.length > 0) {
+            console.log('Usuário logado');
+            return res.send('Usuário logado');
+        } else {
+            console.log('Usuário não encontrado:', { email, senha });
+            return res.send('Usuário não encontrado');
+        }
     });
 });
 
