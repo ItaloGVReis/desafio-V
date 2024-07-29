@@ -22,23 +22,29 @@
         </div>
     </header>
     <main>
-        <div class="signup-container">
-            <h2>Criar uma conta</h2>
-            <form id="signup-form" action="/adduser" method="post">
-                <input name="nome" type="nome" class="input_form" placeholder="Nome" required>
-                <input name="email" type="email" class="input_form" placeholder="Email" required>
-                <div class="password-container">
-                    <input name="senha" type="password" class="input_form" placeholder="Senha" required>
-                    <input type="password" class="input_form" placeholder="Confirme sua senha" required>
-                </div>
-                <button type="submit">Finalizar cadastro</button>
-            </form>
-            <h2 class="texto-login">Login</h2>
-            <form id="login-form" action="/login" method="post">
-                <input name="email" type="email" class="input_form" placeholder="insira seu email" required>
-                <input name="senha" type="password" class="input_form" placeholder="insira sua senha" required>
-                <button type="submit">Fazer Login</button>
-            </form>
+        <div class="tab-content">
+            <div id="login" class="tab-panel active">
+                <h2>Login</h2>
+                <form id="login-form" action="/login" method="post">
+                    <input name="email" type="email" class="input_form" placeholder="Insira seu email" required>
+                    <input name="senha" type="password" class="input_form" placeholder="Insira sua senha" required>
+                    <p>Não possui cadastro? <a href="#" onclick="showTab('signup')">Cadastrar</a></p>
+                    <button type="submit" class="btn">Fazer Login</button>
+                </form>
+            </div>
+            <div id="signup" class="tab-panel">
+                <h2>Criar uma conta</h2>
+                <form id="signup-form" action="/adduser" method="post">
+                    <input name="nome" type="nome" class="input_form" placeholder="Nome" required>
+                    <input name="email" type="email" class="input_form" placeholder="Email" required>
+                    <div class="password-container">
+                        <input name="senha" type="password" class="input_form" placeholder="Senha" required>
+                        <input type="password" class="input_form" placeholder="Confirme sua senha" required>
+                    </div>
+                    <p>Já possui cadastro? <a href="#" onclick="showTab('login')">Login</a></p>
+                    <button type="submit" class="btn">Finalizar cadastro</button>
+                </form>
+            </div>
         </div>
     </main>
     <script src="/script.js"></script>

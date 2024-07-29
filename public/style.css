@@ -195,7 +195,7 @@ form {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
 }
 
 .form-group {
@@ -212,6 +212,7 @@ label {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin-bottom: 5px;
 }
 
 .input_checkbox {
@@ -269,4 +270,46 @@ textarea.input_form {
 
 .texto-login{
     padding-top: 10px;
+}
+
+/* Estilos para abas */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.tab-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.tab-content h2 {
+    padding: 10px 0;
+}
+
+.tab-content p {
+    padding: 10px 0;
+}
+
+.tab-content p a {
+    color: #C2512D;
+}
+
+.tab-content p a:hover {
+    color: #A33F1F;
+}
+
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
 }

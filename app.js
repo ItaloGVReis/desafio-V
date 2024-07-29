@@ -28,12 +28,11 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
 });
 
-// ROTAS USUARIOS
+const User = require('./model/User');
+
 app.get('/users', (req, res) => {
-    let sql = 'SELECT * FROM usuarios';
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        res.json(results);
+    User.getAllUsers((users) => {
+        res.json(users);
     });
 });
 
@@ -46,68 +45,43 @@ app.get('/registrar', (req, res) => {
 });
 
 app.post('/adduser', (req, res) => {
-    console.log('Dados recebidos:', req.body);
-    let user = {
-        nome: req.body.nome,
-        email: req.body.email,
-        senha: req.body.senha,
-        data_cadastro: new Date()
-    };
-    let sql = 'INSERT INTO usuarios SET ?';
-
-    db.query(sql, user, (err, result) => {
-        if (err) {
-            console.error('Erro ao inserir usuário:', err);
-            return res.status(500).send('Erro no servidor');
-        }
+    let newUser = new User(req.body.nome, req.body.email, req.body.senha);
+    newUser.save((result) => {
         console.log('Usuário inserido com sucesso:', result);
         res.redirect('/usuarios');
     });
 });
-app.get('/update/:id', (req, res) => {
-    res.sendFile(__dirname + '/views/users/update.html');
-});
 
 app.get('/user/:id', (req, res) => {
-    let sql = `SELECT * FROM usuarios WHERE id = ${req.params.id}`;
-    db.query(sql, (err, result) => {
-        if (err) throw err;
-        res.json(result[0]);
+    User.getUserById(req.params.id, (user) => {
+        res.json(user);
     });
 });
 
 app.post('/updateuser/:id', (req, res) => {
-    let sql = `UPDATE usuarios SET nome = '${req.body.nome}', email = '${req.body.email}', senha = '${req.body.senha}' WHERE id = ${req.params.id}`;
-    db.query(sql, (err, result) => {
-        if (err) throw err;
+    let updatedData = {
+        nome: req.body.nome,
+        email: req.body.email,
+        senha: req.body.senha
+    };
+    User.updateUserById(req.params.id, updatedData, (result) => {
         res.redirect('/usuarios');
     });
 });
 
 app.get('/delete/:id', (req, res) => {
-    let sql = `DELETE FROM usuarios WHERE id = ${req.params.id}`;
-    db.query(sql, (err, result) => {
-        if (err) throw err;
+    User.deleteUserById(req.params.id, (result) => {
         res.redirect('/usuarios');
     });
 });
+
 app.post('/login', (req, res) => {
-    const email = req.body.email;
-    const senha = req.body.senha;
-
-    const sql = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
-    db.query(sql, [email, senha], (err, results) => {
-        if (err) {
-            console.error('Erro ao buscar usuário:', err);
-            return res.status(500).send('Erro no servidor');
-        }
-
-        if (results.length > 0) {
+    User.authenticate(req.body.email, req.body.senha, (isAuthenticated) => {
+        if (isAuthenticated) {
             console.log('Usuário logado');
-            return res.send('Usuário logado');
+            res.redirect('/');
         } else {
-            console.log('Usuário não encontrado:', { email, senha });
-            return res.send('Usuário não encontrado');
+            alert('Email ou senha inválidos');
         }
     });
 });
