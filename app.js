@@ -29,6 +29,7 @@ app.get('/', (req, res) => {
 });
 
 const User = require('./model/User');
+const Pontos = require('./model/Pontos');
 
 app.get('/users', (req, res) => {
     User.getAllUsers((users) => {
@@ -87,6 +88,17 @@ app.post('/login', (req, res) => {
 });
 
 // PONTOS TURISTICOS
+app.get('/search', (req, res) => {
+    const query = req.query.query;
+    Pontos.search(query, (err, results) => {
+        if (err) {
+            console.error('Erro na busca:', err);
+            return res.status(500).send('Erro no servidor');
+        }
+        res.render('results', { results });
+    });
+});
+
 app.get('/attractions', (req, res) => {
     let sql = 'SELECT * FROM pontos_turisticos';
     db.query(sql, (err, results) => {

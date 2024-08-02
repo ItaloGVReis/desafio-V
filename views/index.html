@@ -28,8 +28,10 @@
     <main>
         <div class="background-image">
             <div class="search-container">
-                <input type="text" placeholder="Qual sua próxima parada?">
-                <button>Pesquisar </button>
+                <form action="/search" method="GET">
+                    <input type="text" name="query" placeholder="Qual sua próxima parada?" required>
+                    <button type="submit">Pesquisar</button>
+                </form>
             </div>
         </div>
     </main>
@@ -40,69 +42,65 @@
             </div>
             
             <div class="row">
-                <div class="citys"><a href=""><img src="/images/Alcântara.jpg" alt="Button 1"></a></div>
-                <div class="citys"><a href=""><img src="/images/Arthur-Azevedo.jpg" alt="Button 2"></a></div>
-                <div class="citys"><a href=""><img src="/images/Atins.jpg" alt="Button 3"></a></div>
+                <div class="citys"><a href=""><img src="/images/Alcântara.jpg" alt="Alcântara"></a></div>
+                <div class="citys"><a href=""><img src="/images/Arthur-Azevedo.jpg" alt="Arthur Azevedo"></a></div>
+                <div class="citys"><a href=""><img src="/images/Atins.jpg" alt="Atins"></a></div>
             </div>
             <div class="row">
-                <div class="citys"><a href=""><img src="/images/mesas.jpeg" alt="Button 4"></a></div>
-                <div class="citys"><a href=""><img src="/images/imperatriz.jpg" alt="Button 5"></a></div>
-                <div class="citys"><a href=""><img src="/images/sao-jose.jpg" alt="Button 6"></a></div>
+                <div class="citys"><a href=""><img src="/images/mesas.jpeg" alt="Chapada das Mesas"></a></div>
+                <div class="citys"><a href=""><img src="/images/imperatriz.jpg" alt="Imperatriz"></a></div>
+                <div class="citys"><a href=""><img src="/images/sao-jose.jpg" alt="Sao José"></a></div>
             </div>
             <div style="display: flex; justify-content: center;">
                 <button class="btn" id="toggle-map-btn">Ver mais</button>
             </div>
-            <div id="map"  class="mapa">
+            <div id="map" class="mapa">
                 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-                <script class="MAPA">
-        var mapInitialized = false;
+                <script class="mapa">
+                    var mapInitialized = false;
 
-document.getElementById('toggle-map-btn').addEventListener('click', function() {
-    var mapContainer = document.getElementById('map');
-    var button = document.getElementById('toggle-map-btn');
+                    document.getElementById('toggle-map-btn').addEventListener('click', function() {
+                        var mapContainer = document.getElementById('map');
+                        var button = document.getElementById('toggle-map-btn');
 
-    if (mapContainer.style.display === 'none' || mapContainer.style.display === '') {
-        mapContainer.style.display = 'block';
-        button.textContent = 'Ocultar';
+                        if (mapContainer.style.display === 'none' || mapContainer.style.display === '') {
+                            mapContainer.style.display = 'block';
+                            button.textContent = 'Ocultar';
 
-        if (!mapInitialized) {
-            // Inicializa o mapa e centraliza no Maranhão (São Luís)
-            var map = L.map('map').setView([-4.960999225079996, -45.27400357825306], 7); // Zoom ajustado para visualizar o estado do Maranhão
+                            if (!mapInitialized) {
+                                var map = L.map('map').setView([-4.960999225079996, -45.27400357825306], 7); 
 
-            // Adiciona uma camada de mapa
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+                                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                }).addTo(map);
 
-            // Lista de locais a serem marcados no Maranhão
-            var locations = [
-                { lat: -5.53544, lng: -47.49034, title: 'Beira Rio Orla de Imperatriz' },
-                { lat: -5.53142, lng: -47.48445, title: 'Calçadão de Imperatriz' },
-                { lat: -7.349726, lng: -46.947914, title: 'Parque Nacional da Chapada das Mesas' },
-                { lat: -7.04417, lng: -47.44249, title: 'Cachoeira do Santuário - Pedra Caída' },
-                { lat: -2.51456, lng: -44.03237, title: 'Praia Panaquatira' },
-                { lat: -2.56171, lng: -44.05554, title: 'Paróquia e Santuário de São José de Ribamar' },
-                { lat: -2.40709, lng: -44.41516, title: 'Igreja do Carmo em Alcântara' },
-                { lat: -2.40888, lng: -44.41650, title: 'Rua da Amargura em Alcântara' },
-                { lat: -2.56429, lng: -42.79485, title: 'Canto do Atins em Barreirinhas' },
-                { lat: -2.48584, lng: -43.12841, title: 'Lençóis Maranhenses' },
-                { lat: -2.52919, lng: -44.30630, title: 'Centro Histórico de São Luís' },
-                { lat: -2.50447, lng: -44.31849, title: 'Espigão Ponta d\'Areia em São Luís' }
-            ];
+                                var locations = [
+                                    { lat: -5.53544, lng: -47.49034, title: 'Beira Rio Orla de Imperatriz' },
+                                    { lat: -5.53142, lng: -47.48445, title: 'Calçadão de Imperatriz' },
+                                    { lat: -7.349726, lng: -46.947914, title: 'Parque Nacional da Chapada das Mesas' },
+                                    { lat: -7.04417, lng: -47.44249, title: 'Cachoeira do Santuário - Pedra Caída' },
+                                    { lat: -2.51456, lng: -44.03237, title: 'Praia Panaquatira' },
+                                    { lat: -2.56171, lng: -44.05554, title: 'Paróquia e Santuário de São José de Ribamar' },
+                                    { lat: -2.40709, lng: -44.41516, title: 'Igreja do Carmo em Alcântara' },
+                                    { lat: -2.40888, lng: -44.41650, title: 'Rua da Amargura em Alcântara' },
+                                    { lat: -2.56429, lng: -42.79485, title: 'Canto do Atins em Barreirinhas' },
+                                    { lat: -2.48584, lng: -43.12841, title: 'Lençóis Maranhenses' },
+                                    { lat: -2.52919, lng: -44.30630, title: 'Centro Histórico de São Luís' },
+                                    { lat: -2.50447, lng: -44.31849, title: 'Espigão Ponta d\'Areia em São Luís' }
+                                ];
 
-            // Loop para criar e adicionar os marcadores
-            locations.forEach(function(location) {
-                L.marker([location.lat, location.lng]).addTo(map)
-                    .bindPopup(location.title);
-            });
+                                locations.forEach(function(location) {
+                                    L.marker([location.lat, location.lng]).addTo(map)
+                                        .bindPopup(location.title);
+                                });
 
-            mapInitialized = true;
-        }
-    } else {
-        mapContainer.style.display = 'none';
-        button.textContent = 'Ver mais';
-    }
-});
+                                mapInitialized = true;
+                            }
+                        } else {
+                            mapContainer.style.display = 'none';
+                            button.textContent = 'Ver mais';
+                        }
+                    });
                 </script>
             </div>
         </div>
