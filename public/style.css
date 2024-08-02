@@ -241,7 +241,7 @@ textarea.input_form {
     position: absolute;
     bottom: 100;
     width: 100%;
-    height: 100%; 
+    height: auto; 
     background-color: #f5f4f5;
 
 }
@@ -271,6 +271,20 @@ textarea.input_form {
 .texto-login{
     padding-top: 10px;
 }
+
+.mapa{
+    display: none;
+    justify-content: center;
+    width: 77%;
+    height: 110vh;
+    margin: 30px auto;
+}
+
+#toggle-map-btn{
+    margin: 30px;
+}
+
+
 
 /* Estilos para abas */
 .tabs {
