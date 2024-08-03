@@ -16,6 +16,6 @@
 # Acessar a página
 `http://localhost:3000`
 
-# Cada alteração no código, rodar novamente no terminal
-`node app.js`
+# Copiar o conteúdo de "script.sql" e colar no banco de dados local
+
 

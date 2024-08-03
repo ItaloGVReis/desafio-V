@@ -228,10 +228,18 @@ main {
     align-items: start;
     justify-content: start;
 }
-
+.attraction-item{
+    background-color: #f5f5f5;
+}
+.attraction-item-description{
+    color: #A33F1F;
+    font-size:large;
+}
 h1 {
     margin-bottom: 1rem;
     font-size: 2rem;
+    color: #A33F1F;
+    font-family: "Irish Grover", system-ui;
 }
 
 form {

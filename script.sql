@@ -55,7 +55,7 @@ INSERT INTO pontos_turisticos(nome, descricao,imagem,latitude,longitude,cidade_i
 VALUES("Cachoeira do santuário - pedra caída", "Situada na Chapada das Mesas, essa cachoeira é conhecida por suas águas cristalinas e a formação rochosa ao redor, que cria uma paisagem deslumbrante e um ambiente perfeito para banhos e fotografia.", '/images/cachoeira/cachoeira1.png',-7.04417, -47.44249,5,1,1,0.0,now()); 
 
 INSERT INTO pontos_turisticos(nome, descricao,imagem,latitude,longitude,cidade_id,status,e_publico,	valor_entrada,data_cadastro)
-VALUES("Praia panaquatira", "Uma praia tranquila com águas limpas e areia branca, ideal para relaxamento. É menos movimentada em comparação com outras praias da região, proporcionando um ambiente mais calmo.", '/images/praia-de-paraquatira/praia-de-panaquatira1.png',-2.51456, -44.03237,4,1,1,0.0,now()); 
+VALUES("Praia panaquatira", "Uma praia tranquila com águas limpas e areia branca, ideal para relaxamento. É menos movimentada em comparação com outras praias da região, proporcionando um ambiente mais calmo.", '/images/praia-de-panaquatira/praia-de-panaquatira1.png',-2.51456, -44.03237,4,1,1,0.0,now()); 
 
 INSERT INTO pontos_turisticos(nome, descricao,imagem,latitude,longitude,cidade_id,status,e_publico,	valor_entrada,data_cadastro)
 VALUES("Paróquia e santuário de São José de Ribamar", "Um importante local de culto, dedicado a São José de Ribamar, padroeiro do Maranhão. O santuário é um centro de peregrinação e oferece uma rica arquitetura religiosa e eventos litúrgicos.", '/images/igreja/igreja1.png',-2.56171, -44.05554,4,1,1,0.0,now()); 
@@ -76,4 +76,4 @@ INSERT INTO pontos_turisticos(nome, descricao,imagem,latitude,longitude,cidade_i
 VALUES("Centro histórico", "O Centro Histórico de São Luís é uma área no coração da capital maranhense, conhecida por sua arquitetura colonial bem preservada e ruas de pedra. Este Patrimônio Mundial da UNESCO é rico em cultura e história, oferecendo um mergulho no passado vibrante da cidade.", '/images/centro/centro1.png',-2.52919, -44.30630,1,1,1,0.0,now());
 
 INSERT INTO pontos_turisticos(nome, descricao,imagem,latitude,longitude,cidade_id,status,e_publico,	valor_entrada,data_cadastro)
-VALUES("Espigão ponta d'areia ", "O Espigão Ponta da Areia está situado em São Luís, Maranhão, com uma extensa faixa de areia e uma vista deslumbrante para o mar. É um excelente ponto para caminhadas, atividades ao ar livre e apreciação do pôr do sol.", '/images/espigao/espigao1.png',-2.52919, -44.30630,1,1,1,0.0,now());
+VALUES("Espigão ponta d'areia ", "O Espigão Ponta da Areia está situado em São Luís, Maranhão, com uma extensa faixa de areia e uma vista deslumbrante para o mar. É um excelente ponto para caminhadas, atividades ao ar livre e apreciação do pôr do sol.", '/images/espigao/espigao1.png',-2.50447, -44.31849,1,1,1,0.0,now());
