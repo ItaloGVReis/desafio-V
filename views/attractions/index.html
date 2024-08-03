@@ -42,8 +42,8 @@
                 .then(response => response.json())
                 .then(data => {
                     const attractionsTbody = document.querySelector('#attractions tbody');
-                    data.forEach(user => {
-                        const userRow = document.createElement('tr');
+                    data.forEach(attraction => {
+                        const attractionRow = document.createElement('tr');
                         attractionRow.innerHTML = `
                             <td>${attraction.id}</td>
                             <td>${attraction.nome}</td>
@@ -54,7 +54,7 @@
                                 <a href="/delete/${attraction.id}" class="action-button">Deletar</a>
                             </td>
                         `;
-                        attractionsTbody.appendChild(userRow);
+                        attractionsTbody.appendChild(attractionRow);
                     });
                 });
         });

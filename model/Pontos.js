@@ -27,6 +27,11 @@ class Pontos {
             callback(null, results);
         });
     }
+
+    static getAttractionsIndex(callback) {
+        const sql = 'SELECT * FROM pontos_turisticos WHERE status = 1 ORDER BY RAND() LIMIT 6';
+        db.query(sql, callback);
+    }
 }
 
 module.exports = Pontos;

@@ -24,12 +24,17 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/index.html');
-});
-
 const User = require('./model/User');
 const Pontos = require('./model/Pontos');
+
+app.get('/', (req, res) => {
+    Pontos.getAttractionsIndex((err, results) => {
+        if (err) {
+            return res.status(500).send('Erro ao buscar pontos turísticos.');
+        }
+        res.render('index', { pontos: results });
+    });
+});
 
 app.get('/users', (req, res) => {
     User.getAllUsers((users) => {
@@ -95,7 +100,7 @@ app.get('/search', (req, res) => {
             console.error('Erro na busca:', err);
             return res.status(500).send('Erro no servidor');
         }
-        res.render('results', { results });
+        res.render('attractions/results', { results });
     });
 });
 
@@ -103,7 +108,21 @@ app.get('/attractions', (req, res) => {
     let sql = 'SELECT * FROM pontos_turisticos';
     db.query(sql, (err, results) => {
         if (err) throw err;
+        console.log(results);
         res.json(results);
+    });
+});
+
+app.get('/ponto', (req, res) => {
+    const id = req.query.id;
+    const sql = 'SELECT pontos_turisticos.*, cidades.nome as nome_cidade FROM pontos_turisticos inner join cidades on pontos_turisticos.cidade_id = cidades.id WHERE pontos_turisticos.id = ?';
+    db.query(sql, [id], (err, result) => {
+        if (err) throw err;
+        if (result.length > 0) {
+            res.render('attractions/ponto', { ponto: result[0] });
+        } else {
+            res.send('Ponto turístico não encontrado');
+        }
     });
 });
 

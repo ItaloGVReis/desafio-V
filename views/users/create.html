@@ -28,7 +28,7 @@
                 <form id="login-form" action="/login" method="post">
                     <input name="email" type="email" class="input_form" placeholder="Insira seu email" required>
                     <input name="senha" type="password" class="input_form" placeholder="Insira sua senha" required>
-                    <p>Não possui cadastro? <a href="#" onclick="showTab('signup')">Cadastrar</a></p>
+                    <p>Não possui cadastro? <a href="javascript:;" onclick="showTab('signup')">Cadastrar</a></p>
                     <button type="submit" class="btn">Fazer Login</button>
                 </form>
             </div>
@@ -41,14 +41,23 @@
                         <input name="senha" type="password" class="input_form" placeholder="Senha" required>
                         <input type="password" class="input_form" placeholder="Confirme sua senha" required>
                     </div>
-                    <p>Já possui cadastro? <a href="#" onclick="showTab('login')">Login</a></p>
+                    <p>Já possui cadastro? <a href="javascript:;" onclick="showTab('login')">Login</a></p>
                     <button type="submit" class="btn">Finalizar cadastro</button>
                 </form>
             </div>
         </div>
     </main>
-    <script src="/script.js"></script>
     <script src="/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function showTab(tabId) {
+            var tabs = document.querySelectorAll('.tab-panel');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        window.onload = () => showTab('login');
+    </script>
 </body>
 </html>

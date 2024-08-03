@@ -23,19 +23,19 @@
     </header>
     <div class="container">
         <h1>Resultados da Busca</h1>
-        <table id="attractions" class="table">
-            <ul>
-                <% results.forEach(result => { %>
-                    <li>
-                        <h2><%= result.nome %></h2>
-                        <p>
-                            <img src="<%= result.imagem %>" alt="<%= result.nome %>" style="max-width: 100%; height: auto;">
+        <ul id="attractions" class="attractions-list">
+            <% results.forEach(result => { %>
+                <li class="attraction-item">
+                    <h2><a href="/ponto?id=<%= result.id %>" style="color: black;"><%= result.nome %></a></h2>
+                    <div class="attraction-item-content">
+                        <img src="<%= result.imagem %>" alt="<%= result.nome %>">
+                        <p class="attraction-item-description">
                             <%= result.descricao %>
                         </p>
-                    </li>
-                <% }) %>
-            </ul>
-        </table>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
     </div>
     <script>
         
