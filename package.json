@@ -2,7 +2,8 @@
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.19.2",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.0"
   },
   "name": "desafio-v",
   "description": "`git clone https://github.com/ItaloGVReis/desafio-V.git`",

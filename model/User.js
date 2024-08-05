@@ -1,10 +1,11 @@
 const mysql = require('mysql');
 
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: 'roundhouse.proxy.rlwy.net',
     user: 'root',
-    password: '',
-    database: 'turistando'
+    password: 'mDNhTgWoOduytIelPlaqRxgXTnsSniCi',
+    database: 'railway',
+    port: 15794,
 });
 
 db.connect(err => {

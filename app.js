@@ -5,10 +5,11 @@ const path = require('path');
 const app = express();
 
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: 'roundhouse.proxy.rlwy.net',
     user: 'root',
-    password: '',
-    database: 'turistando'
+    password: 'mDNhTgWoOduytIelPlaqRxgXTnsSniCi',
+    database: 'railway',
+    port: 15794,
 });
 
 db.connect(err => {
@@ -182,7 +183,7 @@ app.get('/pontos_turisticos/delete/:id', (req, res) => {
     });
 });
 
-const PORT = 3000;
+const PORT = 15794;
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
