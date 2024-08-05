@@ -18,7 +18,4 @@
 
 # Copiar o conteúdo de "script.sql" e colar no banco de dados local
 
-# Instalar o ejs
-`npm install ejs`
-
 
