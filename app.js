@@ -184,7 +184,7 @@ app.get('/pontos_turisticos/delete/:id', (req, res) => {
     });
 });
 
-const PORT = 15794;
+const PORT = process.env.DB_PORT;
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
