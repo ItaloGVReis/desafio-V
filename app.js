@@ -56,7 +56,7 @@ app.post('/adduser', (req, res) => {
     let newUser = new User(req.body.nome, req.body.email, req.body.senha);
     newUser.save((result) => {
         console.log('Usuário inserido com sucesso:', result);
-        res.redirect('/usuarios');
+        res.redirect('/');
     });
 });
 
