@@ -24,7 +24,7 @@ class User {
     }
 
     static getAllUsers(callback) {
-        let sql = 'SELECT * FROM usuarios';
+        let sql = 'SELECT * FROM usuarios2';
         db.query(sql, (err, results) => {
             if (err) throw err;
             callback(results);
@@ -32,7 +32,7 @@ class User {
     }
 
     static getUserById(id, callback) {
-        let sql = 'SELECT * FROM usuarios WHERE id = ?';
+        let sql = 'SELECT * FROM usuarios2 WHERE id = ?';
         db.query(sql, [id], (err, result) => {
             if (err) throw err;
             callback(result[0]);
@@ -40,7 +40,7 @@ class User {
     }
 
     save(callback) {
-        let sql = 'INSERT INTO usuarios SET ?';
+        let sql = 'INSERT INTO usuarios2 SET ?';
         db.query(sql, this, (err, result) => {
             if (err) throw err;
             callback(result);
@@ -48,7 +48,7 @@ class User {
     }
 
     static updateUserById(id, userData, callback) {
-        let sql = 'UPDATE usuarios SET ? WHERE id = ?';
+        let sql = 'UPDATE usuarios2 SET ? WHERE id = ?';
         db.query(sql, [userData, id], (err, result) => {
             if (err) throw err;
             callback(result);
@@ -56,7 +56,7 @@ class User {
     }
 
     static deleteUserById(id, callback) {
-        let sql = 'DELETE FROM usuarios WHERE id = ?';
+        let sql = 'DELETE FROM usuarios2 WHERE id = ?';
         db.query(sql, [id], (err, result) => {
             if (err) throw err;
             callback(result);
@@ -64,7 +64,7 @@ class User {
     }
 
     static authenticate(email, senha, callback) {
-        let sql = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
+        let sql = 'SELECT * FROM usuarios2 WHERE email = ? AND senha = ?';
         db.query(sql, [email, senha], (err, results) => {
             if (err) throw err;
             callback(results.length > 0);
